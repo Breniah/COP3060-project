@@ -11,7 +11,7 @@
 ## System Decomposition 
 ### Major modules/Components
 
-## Team Project Proposal
+## Team Project 
 Breniah Saimpre
 *add your name
 
