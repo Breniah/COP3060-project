@@ -144,7 +144,7 @@ MindBalance is designed with student wellbeing, privacy, and responsible AI usag
 Breniah Saimpre
 Brooke Davis
 Fayolah Pierre
-*add your name
+Jordon Ammons
 >>>>>>> main
 
 * Quick links to campus counseling
