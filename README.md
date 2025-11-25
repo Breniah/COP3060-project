@@ -203,11 +203,11 @@ Home/Dashboard Screenshot
 
 Data Display Page Screenshot
 
-![Data Display Screenshot](path/to/data-display_screenshot.png)
+![Data Display Screenshot](path/to/data display_screenshot.png)
 
 Form Page Screenshot
 
-![Form Page Screenshot](path/to/form-page_screenshot.png)
+![Form Page Screenshot](path/to/form page_screenshot.png)
 
 Demo GIF of Navigation
 
