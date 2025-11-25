@@ -199,15 +199,15 @@ Fayolah Pierre
 
 Home/Dashboard Screenshot
 
-![Dashboard Screenshot](path/to/dashboard_screenshot.png)
+![Dashboard Screenshot](path/to/homepage.png)
 
 Data Display Page Screenshot
 
-![Data Display Screenshot](path/to/data_display_screenshot.png)
+![Data Display Screenshot](path/to/data-display_screenshot.png)
 
 Form Page Screenshot
 
-![Form Page Screenshot](path/to/form_page_screenshot.png)
+![Form Page Screenshot](path/to/form-page_screenshot.png)
 
 Demo GIF of Navigation
 
