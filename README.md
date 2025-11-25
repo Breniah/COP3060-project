@@ -209,7 +209,8 @@ Form Page Screenshot
 
 ![Form Page Screenshot](path/to/form page_screenshot.png)
 
-![image](<img width="1440" height="809" alt="data-display" src="https://github.com/user-attachments/assets/5a4252a2-8e35-43a7-91db-cbf35608fe70" />)
+
+
 
 
 Demo GIF of Navigation
