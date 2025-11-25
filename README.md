@@ -198,5 +198,64 @@ Fayolah Pierre
 ### Screenshots / Demo GIFs
 
 
+---
+
+# AI Usage Log
+
+## Project Information
+
+* **Course:** COP 3060 – Full Stack Web Development
+* **Milestone #:** 2
+* **Team Name:** (Enter Team Name)
+* **Team Members:**
+* * Breniah Saimpre
+* Brooke Davis
+* Fayolah Pierre
+* Jordon Ammons
+* **Date Submitted:** 2025-11-25
+
+---
+
+## Summary of AI Use
+
+AI was used to assist in generating documentation components for the milestone, including the architecture diagram (ASCII format), API endpoint table, and structured descriptions of the frontend and backend components. AI also provided initial text for the AI Usage Log itself. All outputs were reviewed, edited, and validated by the development team to ensure accuracy, relevance, and compliance with project requirements.
+
+---
+
+## Ethical Reflection
+
+The team used AI as a supportive tool, not a replacement for original work. All AI-generated content was checked for correctness, rewritten where necessary, and aligned with the project’s intentions. No AI-generated code was used without review, and no confidential or inappropriate information was shared with AI tools. The team ensured transparency by logging every instance of AI usage in this document.
+
+---
+
+## Appendix: AI Usage Log 
+
+Below is an expanded appendix listing all AI tools, prompts, and their specific purposes throughout the project.
+
+### AI Usage Appendix Table
+
+| Date       | AI Tool | Prompt / Request                                              | Purpose of Use                                              | Output Used | Notes                |
+| ---------- | ------- | ------------------------------------------------------------- | ----------------------------------------------------------- | ----------- | -------------------- |
+| 2025-11-25 | ChatGPT | "Demonstrate ethical AI use in creating architecture diagram" | Ensure diagram creation followed responsible AI guidelines  | Yes         | Reformatted manually |
+| 2025-11-25 | ChatGPT | "Demonstrate ethical AI use when generating endpoint table"   | Produce structured table while keeping human review central | Yes         | Verified accuracy    |
+| 2025-11-25 | ChatGPT | "Support ethical drafting of AI Usage Log"                    | Reinforce transparency and responsible AI documentation     | Yes         | Edited wording       |
+| 2025-11-25 | ChatGPT | "Add appendix showing responsible AI prompts"                 | Highlight commitment to ethical AI usage                    | Yes         | Minor edits          |
+
+All additional AI interactions will be listed here for transparency.
+
+---
+
+## Verification Statement
+
+By signing below, we confirm that all AI usage has been accurately logged, ethically reviewed, and responsibly incorporated into the milestone.
+
+**Signatures:**
+
+* Breniah Saimpre
+* Brooke Davis
+* Fayolah Pierre
+* Jordon Ammons
+
+
 
 
