@@ -1,0 +1,78 @@
+/* GLOBAL */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
+}
+
+/* NAVIGATION */
+nav {
+  background: #4d4dff;
+  padding: 12px;
+}
+
+nav a {
+  color: white;
+  margin-right: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* PAGE WRAPPER */
+.page-container {
+  padding: 20px 40px;
+}
+
+/* HEADINGS */
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* FORM */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+
+input, textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  padding: 10px;
+  background: #4d4dff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #3a3acc;
+}
+
+/* LIST */
+.content-item {
+  background: white;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+.content-item h3 {
+  margin: 0 0 6px;
+  color: #333;
+}
