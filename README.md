@@ -199,15 +199,15 @@ Fayolah Pierre
 
 Home/Dashboard Screenshot
 
-![Dashboard Screenshot](path/to/homepage.png)
+![Dashboard Screenshot](./screenshots/homepage.png)
 
 Data Display Page Screenshot
 
-![Data Display Screenshot](path/to/data display_screenshot.png)
+![Data Display Screenshot](./screenshots/data-display.png)
 
 Form Page Screenshot
 
-![Form Page Screenshot](path/to/form page_screenshot.png)
+![Form Page Screenshot](./screenshots/form-page.png)
 
 
 
