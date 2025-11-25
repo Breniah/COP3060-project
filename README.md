@@ -153,3 +153,50 @@ Fayolah Pierre
 
 
 
+## Architecture Diagram
+
+```
+                    Frontend (ReactJS)
+                    ┌────────────────────────────┐
+                    │        React App            │
+                    │  - Home/Dashboard           │
+                    │  - Data Display Page        │
+                    │  - Form Page                │
+                    └───────────────┬────────────┘
+                                    │ API Calls (Axios/Fetch)
+                                    ▼
+                    ┌────────────────────────────────────────┐
+                    │          Backend (Spring Boot)         │
+                    │  Controller → Service → Model Layers   │
+                    │                                        │
+                    │  REST Endpoints:                       │
+                    │   - GET /api/resource                  │
+                    │   - POST /api/resource                 │
+                    │   - PUT or DELETE /api/resource        │
+                    └───────────────┬────────────────────────┘
+                                    │
+                                    ▼
+                    ┌────────────────────────────────────────┐
+                    │       In-Memory Storage (List/Map)     │
+                    └────────────────────────────────────────┘
+```
+
+---
+
+## API Endpoint Table
+
+| Method | Route              | Purpose                          |
+| ------ | ------------------ | -------------------------------- |
+| GET    | /api/resource      | Retrieve all resource data       |
+| POST   | /api/resource      | Create new resource entry        |
+| PUT    | /api/resource/{id} | Update an existing resource item |
+| DELETE | /api/resource/{id} | Delete an existing resource item |
+
+---
+
+
+### Screenshots / Demo GIFs
+
+
+
+
