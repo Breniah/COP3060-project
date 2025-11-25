@@ -201,17 +201,14 @@ Home/Dashboard Screenshot
 
 ![Dashboard Screenshot] (https://github.com/user-attachments/assets/ea49981a-3230-4360-a2ad-11e86fee3977)
 
-
-![Uploading Screenshot 2025-11-25 at 3.09.21 PM.png…]()
-
-
 Data Display Page Screenshot
 
-![Data Display Screenshot](./screenshots/data-display.png)
+![Data Display Screenshot](https://github.com/user-attachments/assets/f894c5fb-9390-4cd6-bde4-3497f21fee8f)
 
 Form Page Screenshot
 
-![Form Page Screenshot](./screenshots/form-page.png)
+![Form Page Screenshot](https://github.com/user-attachments/assets/14bfd4b9-5e35-46ac-bc99-3640a8254c9e)
+
 
 
 
