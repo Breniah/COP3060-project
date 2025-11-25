@@ -199,7 +199,7 @@ Fayolah Pierre
 
 Home/Dashboard Screenshot
 
-![Dashboard Screenshot] (https://github.com/user-attachments/assets/ea49981a-3230-4360-a2ad-11e86fee3977)
+![Dashboard Screenshot](https://github.com/user-attachments/assets/ea49981a-3230-4360-a2ad-11e86fee3977)
 
 Data Display Page Screenshot
 
