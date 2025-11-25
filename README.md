@@ -224,7 +224,6 @@ Demo GIF of Navigation
 
 * **Course:** COP 3060 – Full Stack Web Development
 * **Milestone #:** 2
-* **Team Name:** (Enter Team Name)
 * **Team Members:**
 * * Breniah Saimpre
 * Brooke Davis
