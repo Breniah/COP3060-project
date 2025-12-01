@@ -153,47 +153,6 @@ Jordon Ammons
 
 
 
-## Architecture Diagram
-
-```
-                    Frontend (ReactJS)
-                    ┌────────────────────────────┐
-                    │        React App            │
-                    │  - Home/Dashboard           │
-                    │  - Data Display Page        │
-                    │  - Form Page                │
-                    └───────────────┬────────────┘
-                                    │ API Calls (Axios/Fetch)
-                                    ▼
-                    ┌────────────────────────────────────────┐
-                    │          Backend (Spring Boot)         │
-                    │  Controller → Service → Model Layers   │
-                    │                                        │
-                    │  REST Endpoints:                       │
-                    │   - GET /api/resource                  │
-                    │   - POST /api/resource                 │
-                    │   - PUT or DELETE /api/resource        │
-                    └───────────────┬────────────────────────┘
-                                    │
-                                    ▼
-                    ┌────────────────────────────────────────┐
-                    │       In-Memory Storage (List/Map)     │
-                    └────────────────────────────────────────┘
-```
-
----
-
-## API Endpoint Table
-
-| Method | Route              | Purpose                          |
-| ------ | ------------------ | -------------------------------- |
-| GET    | /api/resource      | Retrieve all resource data       |
-| POST   | /api/resource      | Create new resource entry        |
-| PUT    | /api/resource/{id} | Update an existing resource item |
-| DELETE | /api/resource/{id} | Delete an existing resource item |
-
----
-
 
 ### Screenshots / Demo GIFs
 
@@ -208,11 +167,6 @@ Data Display Page Screenshot
 Form Page Screenshot
 
 ![Form Page Screenshot](https://github.com/user-attachments/assets/14bfd4b9-5e35-46ac-bc99-3640a8254c9e)
-
-
-
-
-
 
 Demo GIF of Navigation
 
@@ -245,22 +199,203 @@ The team used AI as a supportive tool, not a replacement for original work. All 
 
 ---
 
-## Appendix: AI Usage Log 
+
+## Architecture Diagram
+
+```
+                    Frontend (ReactJS)
+                    ┌────────────────────────────┐
+                    │        React App            │
+                    │  - Home/Dashboard           │
+                    │  - Data Display Page        │
+                    │  - Form Page                │
+                    └───────────────┬────────────┘
+                                    │ API Calls (Axios/Fetch)
+                                    ▼
+                    ┌────────────────────────────────────────┐
+                    │          Backend (Spring Boot)         │
+                    │  Controller → Service → Model Layers   │
+                    │                                        │
+                    │  REST Endpoints:                       │
+                    │   - GET /api/resource                  │
+                    │   - POST /api/resource                 │
+                    │   - PUT or DELETE /api/resource        │
+                    └───────────────┬────────────────────────┘
+                                    │
+                                    ▼
+                    ┌────────────────────────────────────────┐
+                    │       In-Memory Storage (List/Map)     │
+                    └────────────────────────────────────────┘
+```
+
+---
+
+## API Endpoint Table
+
+| Method | Route              | Purpose                          | Auth Required     |
+| ------ | ------------------ | -------------------------------- | ----------------- |
+| GET    | /api/resource      | Retrieve all resource data       | No (public)       |
+| POST   | /api/resource      | Create new resource entry        | Yes (user)        |
+| PUT    | /api/resource/{id} | Update an existing resource item | Yes (owner/admin) |
+| DELETE | /api/resource/{id} | Delete an existing resource item | Yes (owner/admin) |
+
+---
+
+## Database Schema (ERD / JPA Relationships)
+
+A simple ERD for the MindBalance app — suitable for JPA entities and relational DBs (MySQL/Postgres/H2):
+
+````
++----------------+     1     +----------------+    *     +----------------+
+|     User       |----------<|   MoodEntry    |>---------|     Article    |
+|----------------|           |----------------|          |----------------|
+| id (PK)        |           | id (PK)        |          | id (PK)        |
+| username       |           | user_id (FK)   |          | external_id    |
+| email          |           | date           |          | title          |
+| password_hash  |           | mood (enum)    |          | body           |
+| roles          | *-----*   | notes          |          | source         |
++----------------+  UserRole +----------------+          +----------------+
+        | 1-M
+        |
+        | 1-M
++----------------+
+|     Goal       |
+|----------------|
+| id (PK)        |
+| user_id (FK)   |
+| title          |
+| target         |
+| progress       |
++----------------+
+
+Notes:
+- User 1 - M MoodEntry (a user can have many mood entries)
+- User 1 - M Goal
+- Article stores data fetched from external API (optional link to user via favorites)
+- Roles may be implemented as a separate Role entity with Many-to-Many relationship to User (User ↔ Role)
+
+JPA relationships sketch (class-level):
+- @Entity User { @OneToMany(mappedBy="user") List<MoodEntry> moodEntries; @ManyToMany Set<Role> roles; }
+- @Entity MoodEntry { @ManyToOne User user; }
+- @Entity Goal { @ManyToOne User user; }
+- @Entity Article { /* fields from external API */ }
+
+---
+
+## Example API Responses
+
+### Auth
+**POST /api/auth/register** 201 Created
+```json
+{
+  "id": 42,
+  "username": "student01",
+  "email": "student01@university.edu",
+  "message": "User registered successfully"
+}
+````
+
+**POST /api/auth/login** 200 OK
+
+```json
+{
+  "token": "eyJhbGci...",
+  "tokenType": "Bearer",
+  "expiresIn": 3600
+}
+```
+
+### Mood Entries
+
+**GET /api/moods** 200 OK
+
+```json
+[
+  {
+    "id": 1,
+    "userId": 42,
+    "date": "2025-11-30",
+    "mood": "HAPPY",
+    "notes": "Finished project!"
+  },
+  {
+    "id": 2,
+    "userId": 42,
+    "date": "2025-11-29",
+    "mood": "ANXIOUS",
+    "notes": "Exam prep"
+  }
+]
+```
+
+**POST /api/moods** 201 Created
+Request body:
+
+```json
+{
+  "date": "2025-12-01",
+  "mood": "NEUTRAL",
+  "notes": "Long day"
+}
+```
+
+Response:
+
+```json
+{
+  "id": 3,
+  "userId": 42,
+  "date": "2025-12-01",
+  "mood": "NEUTRAL",
+  "notes": "Long day"
+}
+```
+
+### Articles (External API)
+
+**GET /api/articles** 200 OK
+
+```json
+[
+  {
+    "id": 101,
+    "externalId": "hl-2025-01",
+    "title": "Managing Stress",
+    "source": "Health Literacy API",
+    "summary": "Simple strategies to manage stress"
+  }
+]
+```
+
+## Summary of AI Use
+
+AI was used to assist in generating documentation components for the milestone, including the architecture diagram (ASCII format), API endpoint table, and structured descriptions of the frontend and backend components. AI also provided initial text for the AI Usage Log itself. All outputs were reviewed, edited, and validated by the development team to ensure accuracy, relevance, and compliance with project requirements.
+
+---
+
+## Ethical Reflection
+
+The team used AI as a supportive tool, not a replacement for original work. All AI-generated content was checked for correctness, rewritten where necessary, and aligned with the project’s intentions. No AI-generated code was used without review, and no confidential or inappropriate information was shared with AI tools. The team ensured transparency by logging every instance of AI usage in this document.
+
+---
+
+## Appendix: AI Usage Log (Detailed)
 
 Below is an expanded appendix listing all AI tools, prompts, and their specific purposes throughout the project.
 
 ### AI Usage Appendix Table
 
-| Date       | AI Tool | Prompt / Request                                              | Purpose of Use                                              | Output Used | Notes                |
-| ---------- | ------- | ------------------------------------------------------------- | ----------------------------------------------------------- | ----------- | -------------------- |
-| 2025-11-25 | ChatGPT | "Demonstrate ethical AI use in creating architecture diagram" | Ensure diagram creation followed responsible AI guidelines  | Yes         | Reformatted manually |
-| 2025-11-25 | ChatGPT | "Demonstrate ethical AI use when generating endpoint table"   | Produce structured table while keeping human review central | Yes         | Verified accuracy    |
-| 2025-11-25 | ChatGPT | "Support ethical drafting of AI Usage Log"                    | Reinforce transparency and responsible AI documentation     | Yes         | Edited wording       |
-| 2025-11-25 | ChatGPT | "Add appendix showing responsible AI prompts"                 | Highlight commitment to ethical AI usage                    | Yes         | Minor edits          |
+| Date       | AI Tool | Prompt / Request                                                 | Purpose of Use                                                            | Output Used | Notes                                     |
+| ---------- | ------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------- | ----------- | ----------------------------------------- |
+| 2025-11-25 | ChatGPT | "Demonstrate ethical AI use in creating architecture diagram"    | Ensure diagram creation followed responsible AI guidelines                | Yes         | Reformatted manually                      |
+| 2025-11-25 | ChatGPT | "Demonstrate ethical AI use when generating endpoint table"      | Produce structured table while keeping human review central               | Yes         | Verified accuracy                         |
+| 2025-11-25 | ChatGPT | "Support ethical drafting of AI Usage Log"                       | Reinforce transparency and responsible AI documentation                   | Yes         | Edited wording                            |
+| 2025-11-26 | ChatGPT | "Draft example API JSON responses for moods, auth, and articles" | Provide sample request/response payloads for frontend-backend integration | Yes         | Used as reference for frontend mocks      |
+| 2025-11-26 | ChatGPT | "Outline authentication and Spring Security JWT flow"            | Describe endpoints, token structure, and route protection strategy        | Yes         | Incorporated into security plan           |
 
-All additional AI interactions will be listed here for transparency.
 
 ---
+
 
 ## Verification Statement
 
