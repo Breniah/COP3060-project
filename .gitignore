@@ -21,3 +21,16 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# IntelliJ project files
+.idea/
+*.iml
+
+# Compiled Java files
+/target/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
