@@ -1,0 +1,33 @@
+Define 2-3 DTOs or entities with samples attributes and relationships
+
+1. *Entity: User*
+    userID: UUID | Unique idenitifier
+    name: String | Display name
+    email: String | Login identifier 
+    createdDate: DateTime | When the account was made
+    preferredGoal: String | ex. sleep, motivation, etc. 
+
+  * Relationships*
+    one -> many | MoodCheckIn 
+    one -> many | WellnessGoal
+
+2. *Entity: MoodCheckIn* 
+    checkInId: UUID | Unique log identifier
+    userId : UUID | Foreign key -> User
+    date: DateTime | Check-in timestamp
+    moodRating: Integer (1-10) | Emotional score
+    stressLevel: Integer (1-10) | Stress score 
+    notes: String (optional) | Additional journal comments 
+
+  * Relationships*
+    Many -> one | User
+
+3. *Entity: WellnessGoal*
+    goalId: UUID | Goal Identifier 
+    userId: UUID | Foregin -> User
+    goalType: String | ex. sleep improvement, anxiety, etc. 
+    progressPercent: Float (0-100) | Progress tracker
+    updatedAt: DateTime | Last updated time 
+
+  * Relationships*
+    Many -> one | User
