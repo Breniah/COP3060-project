@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./pages/HomePage";
 import DataDisplayPage from "./pages/DataDisplayPage";
 import FormPage from "./pages/FormPage";
+import HealthContentPage from "./pages/Healthcontent";
 
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/data" element={<DataDisplayPage />} />
         <Route path="/form" element={<FormPage />} />
+          <Route path="/health" element={<HealthContentPage />} />
+
       </Routes>
     </Router>
   );
