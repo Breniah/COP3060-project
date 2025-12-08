@@ -151,27 +151,32 @@ Fayolah Pierre
 * National hotlines
 * Safety and emergency information
 
+---
+
 ## Testing Summary
-Performance Results
 
-Load Time: Application loads under 2 seconds on a standard broadband connection.
+### **Performance Results**
 
-API Response Time: Backend REST endpoints consistently respond within 120–250 ms in a local development environment.
+* **Load Time:** Application loads under **2 seconds** on a standard broadband connection.
+* **API Response Time:** Backend REST endpoints respond within **120–250 ms** in a local environment.
+* **Frontend Rendering:** React components render smoothly with no layout shifts or blocking.
+* **Stress Test:** Successfully handled **50–75 concurrent API requests** without failure or timeout.
+* **Error Handling:** All endpoints returned appropriate HTTP status codes (200, 201, 400, 401, 404, 500) with structured error responses.
 
-Frontend Rendering: React components render smoothly with no noticeable layout shifts or blocking.
+---
 
-Stress Test: System successfully handled 50–75 concurrent API requests without failure or timeout.
+### **Accessibility Checklist**
 
-Error Handling: All endpoints return proper HTTP status codes (200, 201, 400, 401, 404, 500) and structured error messages.
+| Requirement                          | Status    |
+| ------------------------------------ | --------- |
+| WCAG AA color contrast               | ✔️ Passed |
+| Images include descriptive alt text  | ✔️ Passed |
+| Semantic HTML headings and structure | ✔️ Passed |
+| Fully keyboard-navigable             | ✔️ Passed |
+| Form inputs have proper labels       | ✔️ Passed |
+| ARIA roles used when necessary       | ✔️ Passed |
+| No flashing / rapid animations       | ✔️ Passed |
+| Logical tab order across UI          | ✔️ Passed |
 
-## Accessibility Checklist
-Requirement	Status
-WCAG AA color contrast	✔️ Passed
-Images include descriptive alt text	✔️ Passed
-Semantic HTML structure maintained	✔️ Passed
-Full keyboard navigation supported	✔️ Passed
-Form inputs have associated labels	✔️ Passed
-ARIA roles used when appropriate	✔️ Passed
-No flashing or harmful animations	✔️ Passed
-Tab order follows logical reading flow	✔️ Passed
+---
 
