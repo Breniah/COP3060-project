@@ -179,4 +179,29 @@ Fayolah Pierre
 | Logical tab order across UI          | ✔️ Passed |
 
 ---
+Screenshots
 
+Add actual image files for visual verification of system functionality:
+
+1. Home/Dashboard Page Screenshot
+
+![Dashboard Screenshot](path/to/dashboard_screenshot.png)
+
+2. Data Display Page Screenshot
+
+![Data Display Screenshot](path/to/data_display_screenshot.png)
+
+3. Form Submission Page Screenshot
+
+![Form Page Screenshot](path/to/form_page_screenshot.png)
+
+4. API Testing Screenshot (Postman or Browser Console)
+
+![API Test Screenshot](path/to/api_test_screenshot.png)
+
+5. Performance & Accessibility Reports
+
+![Lighthouse Score](path/to/lighthouse_score.png)
+![WAVE Report](path/to/wave_report.png)
+
+Replace placeholder paths with your actual images before submission.
