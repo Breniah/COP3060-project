@@ -1,0 +1,60 @@
+User Testing Summary (3 Peers)
+As part of the usability evaluation, I conducted informal user testing with three peers who used the MindBalance Wellness application. 
+Each participant was asked to complete three tasks:
+1.	Navigate between pages using the top menu
+2.	Submit a new entry using the Form page
+3.	View the saved entry on the Data page
+
+Peer Feedback Highlights:
+- Peer 1: "This is clean. I like how simple the layout is.it doesn’t feel overwhelming.The loading message on the Data page definitely helped because at 
+first I thought something was wrong, but then I saw it loading."
+
+- Peer 2: "The form was straightforward. I typed something in and hit submit no confusion at all. The spacing and input boxes look professional."
+
+- Peer 3: “The form was simple. I submitted an entry and it submitted nothing really big.”
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Performance Testing (Before Optimization)
+**Home Page**
+- DOMContentLoaded: 108 ms
+- Load/Finish: 171 ms
+
+**Data Display Page**
+- GET Request Time: 54 ms
+
+**Form Page**
+- GET Request Time: 44 ms
+- POST Request Time: 27 ms
+
+Performance Testing (After Optimization)
+**Home Page**
+- DOMContentLoaded:215 ms
+
+**Data Display Page**
+- GET Request Time: 10 ms
+
+**Form Page**
+- GET Request Time: 47 ms
+- POST Request Time: 18-19 ms
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+Improvement #1: Added Loading State to DataDisplayPage
+Before optimization, the data page attempted to render content immediately while the API request was still pending. This caused layout shifts, blank screen flashes, and 
+unnecessary re-renders while React waited for the data to finish loading. By adding a dedicated loading state, the page now displays a “Loading…” message until the data is fully received. T
+
+Impact:
+•	Faster perceived load time
+•	Cleaner UI
+•	Reduced re-render count
+
+Improvement #2: Memoized Navigation Component Using React.memo()
+Previously, the Navigation component re-rendered every time any page’s state updated (such as when submitting a form or fetching data). 
+Since the navigation bar never changes, these re-renders were unnecessary and wasted computation. By wrapping the Navigation component in React.memo(), 
+React now re-renders it only when its props change — which does not occur in this application. 
+
+Impact:
+•	Fewer component re-renders
+•	Faster transitions
+•	Reduced CPU work in development
+•	Better performance consistency
+
