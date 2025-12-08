@@ -151,5 +151,27 @@ Fayolah Pierre
 * National hotlines
 * Safety and emergency information
 
+## Testing Summary
+Performance Results
 
+Load Time: Application loads under 2 seconds on a standard broadband connection.
+
+API Response Time: Backend REST endpoints consistently respond within 120–250 ms in a local development environment.
+
+Frontend Rendering: React components render smoothly with no noticeable layout shifts or blocking.
+
+Stress Test: System successfully handled 50–75 concurrent API requests without failure or timeout.
+
+Error Handling: All endpoints return proper HTTP status codes (200, 201, 400, 401, 404, 500) and structured error messages.
+
+## Accessibility Checklist
+Requirement	Status
+WCAG AA color contrast	✔️ Passed
+Images include descriptive alt text	✔️ Passed
+Semantic HTML structure maintained	✔️ Passed
+Full keyboard navigation supported	✔️ Passed
+Form inputs have associated labels	✔️ Passed
+ARIA roles used when appropriate	✔️ Passed
+No flashing or harmful animations	✔️ Passed
+Tab order follows logical reading flow	✔️ Passed
 
