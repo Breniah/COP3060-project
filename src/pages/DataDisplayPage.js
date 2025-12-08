@@ -3,13 +3,24 @@ import apiClient from "../api/apiClient";
 
 export default function DataDisplayPage() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     apiClient
       .get("/content")
-      .then((res) => setData(res.data))
-      .catch((err) => console.error(err));
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    return <p>Loading your entries…</p>;
+  }
 
   return (
     <div className="page-container">
@@ -24,5 +35,4 @@ export default function DataDisplayPage() {
     </div>
   );
 }
-
 
