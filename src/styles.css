@@ -1,14 +1,14 @@
 /* GLOBAL */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  background: #f7f7f7;
+  font-family: "Inter", sans-serif;
+  background: gradient(to bottom right, #eef2ff, #c7d2fe);
 }
+
 
 /* NAVIGATION */
 nav {
-  background: #4d4dff;
+  background: #030310;
   padding: 12px;
 }
 

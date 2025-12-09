@@ -6,6 +6,9 @@ import DataDisplayPage from "./pages/DataDisplayPage";
 import FormPage from "./pages/FormPage";
 import HealthContentPage from "./pages/Healthcontent";
 import SettingsPage from "./pages/SettingsPage";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="/form" element={<FormPage />} />
           <Route path="/health" element={<HealthContentPage />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          
 
 
       </Routes>
