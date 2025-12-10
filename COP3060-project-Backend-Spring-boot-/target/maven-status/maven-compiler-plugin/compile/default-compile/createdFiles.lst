@@ -9,11 +9,9 @@ edu/cop3060/project/model/User.class
 edu/cop3060/project/dto/AuthResponse.class
 edu/cop3060/project/model/ContentItem.class
 edu/cop3060/project/model/Role.class
-edu/cop3060/project/config/CorsConfig$1.class
 edu/cop3060/project/repository/UserRepository.class
 edu/cop3060/project/controller/AuthController.class
 edu/cop3060/project/security/JwtService.class
 edu/cop3060/project/service/ContentService.class
 edu/cop3060/project/dto/LoginRequest.class
-edu/cop3060/project/config/CorsConfig.class
 edu/cop3060/project/security/CustomerUserDetailsService.class

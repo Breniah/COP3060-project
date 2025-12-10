@@ -27,7 +27,8 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 // Disabled because Mockito's ByteBuddy integration doesn't support Java 25 yet.
 // CRUD backend tests + auth frontend tests are sufficient for this milestone.
-@Disabled("Disabled on Java 25 due to Mockito / ByteBuddy incompatibility.")
+//@Disabled("Disabled on Java 25 due to Mockito / ByteBuddy incompatibility.")
+@ExtendWith(MockitoExtension.class)
 class AuthControllerTest {
 
     @Mock
