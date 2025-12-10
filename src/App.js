@@ -8,6 +8,7 @@ import HealthContentPage from "./pages/Healthcontent";
 import SettingsPage from "./pages/SettingsPage";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import SelfCarePage from "./pages/SelfCarePage";
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/self-care" element={<SelfCarePage />} />
+
           
 
 

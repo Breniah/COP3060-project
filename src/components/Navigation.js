@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Navigation() {
 
-  const token = localStorage.getItem("token");
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("token");
+    setToken(null);
     window.location.href = "/login";
   };
 
@@ -19,19 +24,17 @@ export default function Navigation() {
       <div style={styles.right}>
         
         {!token ? (
-          // If NOT logged in
           <>
             <Link to="/login" style={styles.link}>Login</Link>
             <Link to="/register" style={styles.link}>Register</Link>
           </>
         ) : (
-          // If LOGGED IN
           <>
             <Link to="/data" style={styles.link}>Data</Link>
             <Link to="/form" style={styles.link}>Form</Link>
             <Link to="/health" style={styles.link}>Health Tips</Link>
+            <Link to="/self-care" style={styles.link}>Self-Care</Link>
 
-            {/* Profile Avatar */}
             <img 
               src="https://i.pravatar.cc/40?img=48"
               alt="profile"

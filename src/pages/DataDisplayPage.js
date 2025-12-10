@@ -5,6 +5,11 @@ export default function DataDisplayPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Edit states
+  const [editId, setEditId] = useState(null);
+  const [editTitle, setEditTitle] = useState("");
+  const [editBody, setEditBody] = useState("");
+
   useEffect(() => {
     apiClient
       .get("/content")
@@ -17,6 +22,44 @@ export default function DataDisplayPage() {
         setLoading(false);
       });
   }, []);
+
+ 
+  const handleDelete = async (id) => {
+    try {
+      await apiClient.delete(`/content/${id}`);
+      setData(data.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error("Delete error:", error);
+      alert("Could not delete entry.");
+    }
+  };
+
+ 
+  const startEdit = (item) => {
+    setEditId(item.id);
+    setEditTitle(item.title);
+    setEditBody(item.body);
+  };
+
+
+  const handleUpdate = async () => {
+    try {
+      const res = await apiClient.put(`/content/${editId}`, {
+        title: editTitle,
+        body: editBody,
+      });
+
+      setData(data.map((item) => (item.id === editId ? res.data : item)));
+
+    
+      setEditId(null);
+      setEditTitle("");
+      setEditBody("");
+    } catch (error) {
+      console.error("Update error:", error);
+      alert("Could not update entry.");
+    }
+  };
 
   if (loading) {
     return (
@@ -44,15 +87,59 @@ export default function DataDisplayPage() {
 
         {data.map((item) => (
           <div key={item.id} style={styles.entryCard}>
-            <h3 style={styles.entryTitle}>📝 {item.title}</h3>
-            <p style={styles.entryBody}>{item.body}</p>
+            {editId === item.id ? (
+              <>
+                {/* EDIT MODE */}
+                <input
+                  value={editTitle}
+                  onChange={(e) => setEditTitle(e.target.value)}
+                  style={styles.input}
+                />
+                <textarea
+                  value={editBody}
+                  onChange={(e) => setEditBody(e.target.value)}
+                  style={styles.textarea}
+                />
+
+                <button onClick={handleUpdate} style={styles.saveBtn}>
+                  Save Changes
+                </button>
+                <button
+                  onClick={() => setEditId(null)}
+                  style={styles.cancelBtn}
+                >
+                  Cancel
+                </button>
+              </>
+            ) : (
+              <>
+                {/* NORMAL VIEW */}
+                <h3 style={styles.entryTitle}>📝 {item.title}</h3>
+                <p style={styles.entryBody}>{item.body}</p>
+
+                <div style={styles.buttonRow}>
+                  <button
+                    onClick={() => startEdit(item)}
+                    style={styles.editBtn}
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    onClick={() => handleDelete(item.id)}
+                    style={styles.deleteBtn}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         ))}
       </div>
     </div>
   );
 }
-
 
 const styles = {
   page: {
@@ -125,5 +212,65 @@ const styles = {
     fontSize: "16px",
     color: "#444",
     lineHeight: "1.6",
+  },
+
+  buttonRow: {
+    display: "flex",
+    gap: "10px",
+    marginTop: "10px",
+  },
+
+  editBtn: {
+    backgroundColor: "#5C6BC0",
+    color: "white",
+    padding: "8px 14px",
+    border: "none",
+    borderRadius: "6px",
+    cursor: "pointer",
+  },
+
+  deleteBtn: {
+    backgroundColor: "#d9534f",
+    color: "white",
+    padding: "8px 14px",
+    border: "none",
+    borderRadius: "6px",
+    cursor: "pointer",
+  },
+
+  input: {
+    width: "100%",
+    padding: "10px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+    marginBottom: "10px",
+  },
+
+  textarea: {
+    width: "100%",
+    padding: "10px",
+    height: "80px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+    marginBottom: "10px",
+  },
+
+  saveBtn: {
+    backgroundColor: "#4CAF50",
+    color: "white",
+    padding: "8px 16px",
+    border: "none",
+    borderRadius: "6px",
+    cursor: "pointer",
+    marginRight: "8px",
+  },
+
+  cancelBtn: {
+    backgroundColor: "#9E9E9E",
+    color: "white",
+    padding: "8px 16px",
+    border: "none",
+    borderRadius: "6px",
+    cursor: "pointer",
   },
 };

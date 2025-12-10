@@ -57,13 +57,14 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 .authorizeHttpRequests(auth -> auth
-                        // Allow ALL OPTIONS (CORS preflight)
+
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
-                        // Public endpoints
-                        .requestMatchers("/auth/**", "/test", "/api/health/**").permitAll()
 
-                        // Everything else requires auth
+                        .requestMatchers("/auth/**", "/test", "/api/health/**").permitAll()
+                        .requestMatchers("/api/affirmation").permitAll()
+
+
                         .anyRequest().authenticated()
                 )
 
